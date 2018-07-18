@@ -18,6 +18,39 @@ include "header.php";
         <!-- Main content -->
         <section class="content container-fluid">
 
+            <?php
+            if(isset($_POST["perbarui"])){
+                $pekerjaan      = $_POST["pekerjaan"];
+                $pekerjaan      = $dataAkses->mysqlEscapeString($pekerjaan);
+                $jumlahuang     = $_POST["jumlahuang"];
+                $jumlahuang     = $dataAkses->mysqlEscapeString($jumlahuang);
+
+                echo '
+                        <div class="callout callout-info">
+                            <h4>';
+                echo $dataAkses->updateProfile($dataUser->id,$pekerjaan,$jumlahuang);
+                echo '</h4>
+<p>Ganti Halaman lalu akses halaman ini lagi untuk melihat perubahan.</p>
+                        </div>
+                    ';
+            }elseif (isset($_POST['ganti'])){
+                $katasandi      = $_POST["katasandi"];
+                $katasandi      = $dataAkses->mysqlEscapeString($katasandi);
+                $sandibaru      = $_POST["sandibaru"];
+                $sandibaru      = $dataAkses->mysqlEscapeString($sandibaru);
+                $sandibarubaru  = $_POST["sandibarubaru"];
+                $sandibarubaru  = $dataAkses->mysqlEscapeString($sandibarubaru);
+
+                echo '
+                        <div class="callout callout-info">
+                            <h4>';
+                    echo $dataAkses->updatePassword($dataUser->id,$sandibaru,$sandibarubaru);
+                echo '</h4>
+<p>Ganti Halaman lalu akses halaman ini lagi untuk melihat perubahan.</p>
+                        </div>
+                    ';
+            }
+            ?>
             <div class="row">
                 <!-- left column -->
                 <div class="col-md-6">
@@ -28,38 +61,38 @@ include "header.php";
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
-                        <form role="form">
+                        <form role="form" action="" method="post">
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="exampleInput">ID User</label>
-                                    <input type="text" class="form-control" id="exampleInput" value="123" disabled>
+                                    <input type="text" class="form-control" id="exampleInput" value="<?php echo $dataUser->id;?>" disabled>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInput">Email</label>
-                                    <input type="text" class="form-control" id="exampleInput" value="" disabled>
+                                    <input type="text" class="form-control" id="exampleInput" value="<?php echo $dataUser->email;?>" disabled>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInpuNama">Nama Lengkap</label>
-                                    <input type="text" class="form-control" id="exampleInputNama" value="NAMA KAMU" disabled>
+                                    <input type="text" class="form-control" id="exampleInputNama" value="<?php echo $dataUser->nama;?>" disabled>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInput">Tanggal Lahir</label>
-                                    <input type="text" class="form-control" id="exampleInput" value="" disabled>
+                                    <input type="text" class="form-control" id="exampleInput" value="<?php echo $dataUser->umur;?>" disabled>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInput">Pekerjaan</label>
-                                    <input type="text" class="form-control" id="exampleInput" value="">
+                                    <input type="text" name="pekerjaan" class="form-control" id="exampleInput" value="<?php echo $dataUser->pekerjaan;?>" required>
                                 </div>
                                 <h4>Gaji Anda Perbulan</h4>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-money"></i></span>
-                                    <input class="form-control" placeholder="Mata Uang Rupiah" type="number" name="jumlahuang" required>
+                                    <input class="form-control" placeholder="Mata Uang Rupiah" type="number" name="jumlahuang" value="<?php echo $dataUser->gaji;?>" required>
                                 </div>
                             </div>
                             <!-- /.box-body -->
 
                             <div class="box-footer">
-                                <button type="submit" class="btn btn-primary pull-right">Perbarui</button>
+                                <button type="submit" class="btn btn-primary pull-right" name="perbarui">Perbarui</button>
                             </div>
                         </form>
                     </div>
@@ -83,23 +116,23 @@ include "header.php";
                         <div class="box-header with-border">
                             <h3 class="box-title">Kata Sandi</h3>
                         </div>
-                        <form role="form">
+                        <form role="form" action="" method="post">
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="exampleInpuNama">Kata Sandi Saat Ini</label>
-                                    <input type="password" class="form-control" id="exampleInputNama" name="">
+                                    <input type="password" class="form-control" id="exampleInputNama" name="katasandi" placeholder="password anda">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInput">Kata Sandi Baru</label>
-                                    <input type="password" class="form-control" id="exampleInput">
+                                    <input type="password" class="form-control" id="exampleInput" name="sandibaru" placeholder="password anda">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInput">Ulangi Kata Sandi Baru</label>
-                                    <input type="password" class="form-control" id="exampleInput">
+                                    <input type="password" class="form-control" id="exampleInput" name="sandibarubaru" placeholder="password anda">
                                 </div>
                             </div>
                             <div class="box-footer">
-                                <button type="submit" class="btn btn-primary pull-right">Ganti Kata Sandi</button>
+                                <button type="submit" class="btn btn-primary pull-right" name="ganti">Ganti Kata Sandi</button>
                             </div>
                         </form>
                     </div>

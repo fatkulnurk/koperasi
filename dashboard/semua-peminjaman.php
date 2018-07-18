@@ -8,8 +8,8 @@ include "header.php";
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Pengajuan Pinjaman
-            <small>Daftar Pengajuan Pinjaman</small>
+            Semua Pinjaman
+            <small>Peminjaman di tolak, disetujui, dan berlangsung</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="./index.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
@@ -19,12 +19,20 @@ include "header.php";
 
     <!-- Main content -->
     <section class="content container-fluid">
+        <?php
+        if(isset($_GET['id'])){
+            $id = $dataAkses->mysqlEscapeString($_GET['id']);
 
+            echo '<div class="callout callout-info"><h4>';
+            echo $dataAkses->hapusPeminjaman($id);
+            echo '</h4></div>';
+        }
+        ?>
         <div class="row">
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Daftar Pengajuan Pinjaman</h3>
+                        <h3 class="box-title">Semua pengajuan Pinjaman</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -37,43 +45,29 @@ include "header.php";
                                 <th>Tanggal</th>
                                 <th>Status</th>
                                 <th>Menurut Sistem</th>
-                                <th>Setujui / Tolak</th>
+                                <th>Hapus Data</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>Trident</td>
-                                <td>Internet
-                                    Explorer 5.0
-                                </td>
-                                <td>Win 95+</td>
-                                <td>5</td>
-                                <td>C</td>
-                                <td>C</td>
-                                <td class="text-center"><a class="btn btn-info btn-flat">Setujui</a>&ensp;&ensp;&ensp;<a class="btn btn-danger btn-flat">Tolak</a></td>
-                            </tr>
-                            <tr>
-                                <td>Trident</td>
-                                <td>Internet
-                                    Explorer 5.0
-                                </td>
-                                <td>Win 95+</td>
-                                <td>5</td>
-                                <td>C</td>
-                                <td>C</td>
-                                <td class="text-center"><a class="btn btn-info btn-flat">Setujui</a>&ensp;&ensp;&ensp;<a class="btn btn-danger btn-flat">Tolak</a></td>
-                            </tr>
-                            <tr>
-                                <td>Trident</td>
-                                <td>Internet
-                                    Explorer 5.0
-                                </td>
-                                <td>Win 95+</td>
-                                <td>5</td>
-                                <td>C</td>
-                                <td>C</td>
-                                <td class="text-center"><a class="btn btn-info btn-flat">Setujui</a>&ensp;&ensp;&ensp;<a class="btn btn-danger btn-flat">Tolak</a></td>
-                            </tr>
+                            <?php
+                            // ambil semua data di tabel user dan meyimpannya pada variabel data
+                            //                                $data = $dataAkses->ambilPeminjaman();
+                            $data = $dataAkses->ambilPeminjaman();
+                            while($a = $dataAkses->fetchAssoc($data)){
+                                echo '
+                                <tr>
+                                <td>'.$a["peminjaman_nama_lengkap"].'</td>
+                                <td>'.$a["peminjaman_nominal"].'</td>
+                                <td>'.$a["peminjaman_jangka_waktu"].'</td>
+                                <td>'.$a["peminjaman_timestap"].'</td>
+                                <td>'.$a["peminjaman_status"].'</td>     
+                                <td class="text-success text-bold">Sistem Belum Bisa</td>
+                                <td class="text-center"><a class="btn btn-danger btn-flat" href="?id='.$a["peminjaman_id"].'">Hapus</a></td>
+                                </tr>
+                                ';
+                            }
+                            ?>
+                            </tbody>
                             <tfoot>
                             <tr>
                                 <th>No</th>
@@ -82,7 +76,7 @@ include "header.php";
                                 <th>Tanggal</th>
                                 <th>Status</th>
                                 <th>Menurut Sistem</th>
-                                <th>Setujui / Tolak</th>
+                                <th>Hapus Data</th>
                             </tr>
                             </tfoot>
                         </table>

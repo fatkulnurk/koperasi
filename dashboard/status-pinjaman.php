@@ -8,8 +8,8 @@ include "header.php";
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Dashboard
-                <small>Optional description</small>
+                Status Pinjaman
+                <small>Status Pinjaman Anda</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="./index.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
@@ -24,7 +24,7 @@ include "header.php";
                 <div class="col-xs-12">
                     <div class="box">
                         <div class="box-header">
-                            <h3 class="box-title">Hover Data Table</h3>
+                            <h3 class="box-title">Status Pinjaman Anda</h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
@@ -39,24 +39,21 @@ include "header.php";
                                 </tr>
                                 </thead>
                                 <tbody>
+                                <?php
+                                // ambil semua data di tabel user dan meyimpannya pada variabel data
+                                $data = $dataAkses->ambilPeminjamanById($dataUser->id);
+                                while($a = $dataAkses->fetchAssoc($data)){
+                                    echo '
                                 <tr>
-                                    <td>Trident</td>
-                                    <td>Internet
-                                        Explorer 4.0
-                                    </td>
-                                    <td>Win 95+</td>
-                                    <td> 4</td>
-                                    <td>X</td>
-                                </tr>
-                                <tr>
-                                    <td>Trident</td>
-                                    <td>Internet
-                                        Explorer 5.0
-                                    </td>
-                                    <td>Win 95+</td>
-                                    <td>5</td>
-                                    <td>C</td>
-                                </tr>
+                                <td>'.$a["peminjaman_id"].'</td>
+                                <td>'.$a["peminjaman_nominal"].'</td>
+                                <td>'.$a["peminjaman_jangka_waktu"].'</td>
+                                <td>'.$a["peminjaman_timestap"].'</td>
+                                <td>'.$a["peminjaman_status"].'</td>                                
+                                ';
+                                }
+                                ?>
+                                </tbody>
                                 <tfoot>
                                 <tr>
                                     <th>No</th>

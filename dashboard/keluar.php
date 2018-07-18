@@ -1,6 +1,5 @@
 <?php
-include "../app.php";
-// menghapus semua session
+session_start();
 session_destroy();
 
 // redirect header

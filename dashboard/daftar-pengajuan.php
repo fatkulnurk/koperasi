@@ -20,6 +20,20 @@ include "header.php";
         <!-- Main content -->
         <section class="content container-fluid">
 
+            <?php
+            if(isset($_GET["status"]) && isset($_GET['id'])){
+                $status = $_GET['status'];
+                $id     = $_GET['id'];
+
+                echo '
+                        <div class="callout callout-info">
+                            <h4>';
+                echo $dataAkses->DPJ($status,$id);
+                echo '</h4>
+                        </div>
+                    ';
+            }
+            ?>
             <div class="row">
                 <div class="col-xs-12">
                     <div class="box">
@@ -31,7 +45,7 @@ include "header.php";
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th>No</th>
+                                    <th>Nama</th>
                                     <th>Jumlah</th>
                                     <th>Jangka Waktu</th>
                                     <th>Tanggal</th>
@@ -41,42 +55,28 @@ include "header.php";
                                 </tr>
                                 </thead>
                                 <tbody>
+                                <?php
+                                // ambil semua data di tabel user dan meyimpannya pada variabel data
+//                                $data = $dataAkses->ambilPeminjaman();
+                                $data = $dataAkses->query("select * from peminjaman where peminjaman_status='menunggu'");
+                                while($a = $dataAkses->fetchAssoc($data)){
+                                    echo '
                                 <tr>
-                                    <td>Trident</td>
-                                    <td>Internet
-                                        Explorer 5.0
-                                    </td>
-                                    <td>Win 95+</td>
-                                    <td>5</td>
-                                    <td>C</td>
-                                    <td>C</td>
-                                    <td class="text-center"><a class="btn btn-info btn-flat">Setujui</a>&ensp;&ensp;&ensp;<a class="btn btn-danger btn-flat">Tolak</a></td>
+                                <td>'.$a["peminjaman_nama_lengkap"].'</td>
+                                <td>'.$a["peminjaman_nominal"].'</td>
+                                <td>'.$a["peminjaman_jangka_waktu"].'</td>
+                                <td>'.$a["peminjaman_timestap"].'</td>
+                                <td>'.$a["peminjaman_status"].'</td>     
+                                <td class="text-success text-bold">Sistem Belum Bisa</td>
+                                <td class="text-center"><a class="btn btn-info btn-flat" href="?status=disetujui&id='.$a["peminjaman_id"].'">Setujui</a>&ensp;&ensp;&ensp;<a class="btn btn-danger btn-flat" href="?status=ditolak&id='.$a["peminjaman_id"].'">Tolak</a></td>
                                 </tr>
-                                <tr>
-                                    <td>Trident</td>
-                                    <td>Internet
-                                        Explorer 5.0
-                                    </td>
-                                    <td>Win 95+</td>
-                                    <td>5</td>
-                                    <td>C</td>
-                                    <td>C</td>
-                                    <td class="text-center"><a class="btn btn-info btn-flat">Setujui</a>&ensp;&ensp;&ensp;<a class="btn btn-danger btn-flat">Tolak</a></td>
-                                </tr>
-                                <tr>
-                                    <td>Trident</td>
-                                    <td>Internet
-                                        Explorer 5.0
-                                    </td>
-                                    <td>Win 95+</td>
-                                    <td>5</td>
-                                    <td>C</td>
-                                    <td>C</td>
-                                    <td class="text-center"><a class="btn btn-info btn-flat">Setujui</a>&ensp;&ensp;&ensp;<a class="btn btn-danger btn-flat">Tolak</a></td>
-                                </tr>
+                                ';
+                                }
+                                ?>
+                                </tbody>
                                 <tfoot>
                                 <tr>
-                                    <th>No</th>
+                                    <th>Nama</th>
                                     <th>Jumlah</th>
                                     <th>Jangka Waktu</th>
                                     <th>Tanggal</th>

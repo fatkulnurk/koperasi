@@ -8,8 +8,8 @@ include "header.php";
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Pengajuan Pinjaman
-            <small>Daftar Pengajuan Pinjaman</small>
+            Peminjaman Yang Sedang Aktif
+            <small>Daftar Peminjaman Berlangsung</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="./index.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
@@ -19,70 +19,61 @@ include "header.php";
 
     <!-- Main content -->
     <section class="content container-fluid">
+        <?php
+        if(isset($_GET["status"]) && isset($_GET['id'])){
+            $status = $_GET['status'];
+            $id     = $_GET['id'];
 
+            echo '<div class="callout callout-info"><h4>';
+            echo $dataAkses->SM($status,$id);
+            echo '</h4></div>';
+        }
+        ?>
         <div class="row">
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Daftar Pengajuan Pinjaman</h3>
+                        <h3 class="box-title">Daftar Peminjaman Berlangsung</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
                         <table id="example2" class="table table-bordered table-hover">
                             <thead>
                             <tr>
-                                <th>No</th>
+                                <th>Nama</th>
                                 <th>Jumlah</th>
                                 <th>Jangka Waktu</th>
                                 <th>Tanggal</th>
-                                <th>Status</th>
-                                <th>Menurut Sistem</th>
-                                <th>Setujui / Tolak</th>
+                                <th>Info Pembayaran</th>
+                                <th>Lunas / Belum</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>Trident</td>
-                                <td>Internet
-                                    Explorer 5.0
-                                </td>
-                                <td>Win 95+</td>
-                                <td>5</td>
-                                <td>C</td>
-                                <td>C</td>
-                                <td class="text-center"><a class="btn btn-info btn-flat">Setujui</a>&ensp;&ensp;&ensp;<a class="btn btn-danger btn-flat">Tolak</a></td>
-                            </tr>
-                            <tr>
-                                <td>Trident</td>
-                                <td>Internet
-                                    Explorer 5.0
-                                </td>
-                                <td>Win 95+</td>
-                                <td>5</td>
-                                <td>C</td>
-                                <td>C</td>
-                                <td class="text-center"><a class="btn btn-info btn-flat">Setujui</a>&ensp;&ensp;&ensp;<a class="btn btn-danger btn-flat">Tolak</a></td>
-                            </tr>
-                            <tr>
-                                <td>Trident</td>
-                                <td>Internet
-                                    Explorer 5.0
-                                </td>
-                                <td>Win 95+</td>
-                                <td>5</td>
-                                <td>C</td>
-                                <td>C</td>
-                                <td class="text-center"><a class="btn btn-info btn-flat">Setujui</a>&ensp;&ensp;&ensp;<a class="btn btn-danger btn-flat">Tolak</a></td>
-                            </tr>
+                            <?php
+                            // ambil semua data di tabel user dan meyimpannya pada variabel data
+                            //                                $data = $dataAkses->ambilPeminjaman();
+                            $data = $dataAkses->query("select * from peminjaman where peminjaman_status='disetujui' and peminjaman_lunas='belum'");
+                            while($a = $dataAkses->fetchAssoc($data)){
+                                echo '
+                                <tr>
+                                <td>'.$a["peminjaman_nama_lengkap"].'</td>
+                                <td>'.$a["peminjaman_nominal"].'</td>
+                                <td>'.$a["peminjaman_jangka_waktu"].'</td>
+                                <td>'.$a["peminjaman_timestap"].'</td>
+                                <td>'.$a["peminjaman_lunas"].' Lunas</td>      
+                                <td class="text-center"><a class="btn btn-primary btn-flat" href="?status=sudah&id='.$a["peminjaman_id"].'">Sudah Lunas</a></td>
+                                </tr>
+                                ';
+                            }
+                            ?>
                             <tfoot>
                             <tr>
-                                <th>No</th>
+                                <th>Nama</th>
                                 <th>Jumlah</th>
                                 <th>Jangka Waktu</th>
                                 <th>Tanggal</th>
-                                <th>Status</th>
-                                <th>Menurut Sistem</th>
-                                <th>Setujui / Tolak</th>
+                                <th>Info Pembayaran</th>
+                                <th>Lunas / Belum</th>
                             </tr>
                             </tfoot>
                         </table>

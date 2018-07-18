@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" class="has-navbar-fixed-bottom">
+<head>
+    <meta charset="UTF-8">
+    <title>Koperasi</title>
+    <link rel="stylesheet" href="asset/bulma-0.7.0/css/bulma.min.css" media="all">
+    <style media="all">
+        html,body{
+            background: url("asset/images/background.png");
+            background-position: top;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        .bgroup{
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+        nav{
+            border-top: solid white 1px;
+        }
+    </style>
+</head>
+<body class="is-fullwidth is-fullheight">
+<section class="hero is-transparent is-fullwidth is-medium">
+    <div class="hero-body">
+        <div class="has-text-centered">
+            <h1 class="title is-1 has-text-white">KPRI EDIPENI</h1>
+            <p class="subtitle has-text-white-bis">Mewujudkan koperasi sebagai wadah perjuangan ekonomi yang mandiri,<br>
+                tangguh dan mempu bersaing meningkatkan kesejahteraan.</p>
+
+            <div class="bgroup">
+                <a href="dashboard/login.php" class="button is-danger is-inverted is-rounded is-medium">Masuk</a> &ensp; <a href="dashboard/daftar.php" class="button is-info is-inverted is-rounded is-medium">Daftar</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<nav class="navbar is-fixed-bottom is-light is-hidden-touch" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <!-- navbar items, navbar burger... -->
+        </div>
+        <div class="navbar-menu has-text-centered">
+            <!-- navbar start, navbar end -->
+            <a class="navbar-item">Apakah anda sudah punya akun?</a>
+            <div class="navbar-item">
+                <div class="field is-grouped">
+                    <p class="control">
+                        <a href="dashboard/login" class="button is-danger is-normal is-inverted is-rounded"><span>Masuk</span></a>
+                    </p>
+                    <p class="control">
+                        <a href="dashboard/daftar" class="navbar-item button is-info is-normal is-inverted is-rounded"><span>Mendaftar</span></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <p><span>Copyright © 2018 KPRI EDIPENI</span></p>
+            </div>
+        </div>
+    </div>
+</nav>
+</body>
+</html>

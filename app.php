@@ -1,14 +1,19 @@
 <?php
-session_start();
-require_once "app/app.php";
+require_once "app/DataAkses.php";
+require_once "app/functions.php";
+require_once "app/User.php";
 
+// object Akses data
 $dataAkses = new DataAkses();
-//$result = $dataAkses->ambilUsers();
 
-//$result = $dataAkses->query("SELECT * FROM USER");
+// object data user
+$dataUser = new User();
+
+
 //
-////print_r($dataAkses->fetchArray($result));
+//$conn = mysqli_connect("localhost","root","","koperasi");
+//$result = mysqli_query($conn,"select * from user");
 //
-//foreach ($result as $data){
-//    echo $data["user_email"];
+//while($row = $result->fetch_assoc()) {
+//    echo $row["user_namalengkap"]. "<br>";
 //}

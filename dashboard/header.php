@@ -1,5 +1,8 @@
 <?php
 require_once "../app.php";
+if ($_SESSION['masuk'] != "sukses"){
+    header_location("./keluar.php");
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -29,8 +32,10 @@ require_once "../app.php";
     <![endif]-->
 
     <!-- Google Font -->
+    <!--
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+          -->
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -39,7 +44,7 @@ require_once "../app.php";
     <header class="main-header">
 
         <!-- Logo -->
-        <a href="index2.html" class="logo">
+        <a href="?" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>K</b>PR</span>
             <!-- logo for regular state and mobile devices -->
@@ -62,15 +67,15 @@ require_once "../app.php";
                             <!-- The user image in the navbar-->
                             <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                            <span class="hidden-xs">Alexander Pierce</span>
+                            <span class="hidden-xs"><?php echo $dataUser->nama;?></span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- The user image in the menu -->
                             <li class="user-header">
                                 <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                                 <p>
-                                    Alexander Pierce - Web Developer
-                                    <small>Member since Nov. 2012</small>
+                                    <?php echo $dataUser->nama;?> - <?php echo $dataUser->pekerjaan;?>
+                                    <small>Member since <?php echo $dataUser->timestamp;?></small>
                                 </p>
                             </li>
                             <!-- Menu Body -->
@@ -100,7 +105,7 @@ require_once "../app.php";
                     <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
-                    <p>Alexander Pierce</p>
+                    <p><?php echo $dataUser->nama;?></p>
                     <!-- Status -->
                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>
@@ -134,6 +139,7 @@ require_once "../app.php";
                     <ul class="treeview-menu">
                         <li><a href="./daftar-pengajuan.php"><i class="fa fa-money"></i> Pengajuan Pinjaman Terbaru</a></li>
                         <li><a href="./sedang-meminjam.php"><i class="fa fa-grav"></i> Sedang Meminjam</a></li>
+                        <li><a href="./pinjaman-sudah-lunas.php"><i class="fa fa-grav"></i> Pinjaman Sudah Lunas</a></li>
                         <li><a href="./semua-peminjaman.php"><i class="fa fa-address-book"></i> Semua Peminjaman</a></li>
                     </ul>
                 </li>

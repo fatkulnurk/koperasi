@@ -1,4 +1,15 @@
 <?php
+// Menjalankan Session
+session_start();
+
+/*********************************
+ * INFORMASI CLASS DataAkses
+ *
+ * Ini adalah class yang di gunakan untuk akses, update, hapus, edit data yang ada di database.
+ * Semua fungsi standart dari mysqli di rubah naming convensionnya menjadi CamelCase, agar penulisannya mudah.
+ *
+*********************************/
+
 include_once "Db.php";
 
 class DataAkses extends Db
@@ -22,19 +33,157 @@ class DataAkses extends Db
         }
     }
 
-    /*
-    CRUD USER
-     */
-
+    /*************************************************
+     *                 CRUD USER
+     *************************************************/
     // mengambil semua data di tabel user
     public function ambilUsers(){
-        return $this->conn->query("select * from user");
+        $result = $this->conn->query("select * from user");
+        return $result;
+    }
+
+    // ambil user tertentu
+    public function ambilUserTertentu($id){
+        $result = $this->conn->query("select * from user where user_id='$id'");
+        return $result->fetch_assoc();
+    }
+
+    // Hapus user tertentu
+    public function hapusUserTertentu($id){
+        $result = $this->conn->query("DELETE FROM user where user_id='$id'");
+        if($result){
+            return "Hapus Sukses";
+        }else{
+            return "Hapus Gagal";
+        }
+    }
+
+    // mengambil semua data di peminjaman
+    public function ambilPeminjaman(){
+        $result =  $this->conn->query("select * from peminjaman");
+        return $result;
+    }
+
+    // mengambil semua data di peminjaman berdasarkan id tertentu
+    public function ambilPeminjamanById($id){
+        $result =  $this->conn->query("select * from peminjaman where peminjaman_user_id='$id'");
+        return $result;
     }
 
 
-    /****
-    FUNGSI PEMBANTU KONEKSI DAN PENGAMBILAN DATA (BAWAAN PHP TAPI DI RUBAH NAMING CONVENSIONNYA MENJADI CAMELCASE)
-     ****/
+    function tambahPeminjaman($id,$nama,$jangkawaktu,$nominal){
+        $result = $this->conn->query("INSERT INTO peminjaman (peminjaman_user_id, peminjaman_nama_lengkap, peminjaman_nominal, peminjaman_jangka_waktu) VALUES ('$id','$nama','$nominal','$jangkawaktu');");
+        if($result){
+            return "Pengajuan Peminjaman Berhasil";
+        }else{
+            return "Pengajuan Peminjaman Gagal";
+        }
+    }
+
+    // login checker
+    function masuk($email,$password){
+        $password = md5($password);
+        $result = $this->conn->query("select * from user where user_email='$email' AND user_password='$password';");
+        $data = $this->fetchAssoc($result);
+
+        $_SESSION['id'] = $data['user_id'];
+
+        return $this->numRows($result);
+    }
+
+    // daftar user baru
+    function daftar($email,$nama,$kelamin,$gaji,$umur,$pekerjaan,$password){
+        $result = $this->conn->query("INSERT INTO user (user_email, user_namalengkap, user_kelamin, user_gaji, user_umur, user_pekerjaan, user_password) VALUES ('$email','$nama','$kelamin','$gaji','$umur','$pekerjaan','$password');");
+        if($result){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    // update profile
+    function updateProfile($id,$pekerjaan,$uang){
+        $result = $this->conn->query("UPDATE user SET user_pekerjaan='$pekerjaan',user_gaji='$uang' WHERE user_id='$id'");
+        if($result){
+            return "Update Berhasil";
+        }else{
+            return "Update Gagal";
+        }
+    }
+
+    // edit data profile
+    function updateDataProfile($id,$email,$namalengkap,$tgl){
+        $result = $this->conn->query("UPDATE user SET user_email='$email',user_namalengkap='$namalengkap',user_umur='$tgl' WHERE user_id='$id'");
+        if($result){
+            return "Update Data Berhasil";
+        }else{
+            return "Update Data Gagal";
+        }
+    }
+
+    // update hak akses
+    function updateHakAkses($id,$akses){
+        $result = $this->conn->query("UPDATE user SET user_tipe_akun='$akses' WHERE user_id='$id'");
+        if($result){
+            return "Update Hak Akses Berhasil";
+        }else{
+            return "Update Hak Akses Gagal";
+        }
+    }
+
+    // update password atau ganti password
+    function updatePassword($id,$passwordbaru,$passwordbaru2){
+        if($passwordbaru != $passwordbaru2){
+            return "Kata Sandi Baru Yang Anda Masukan Tidak Sama.";
+        }else {
+            $passwordbaru = md5($passwordbaru);
+            $result = $this->conn->query("UPDATE user SET user_password='$passwordbaru' WHERE user_id='$id'");
+            if($result){
+                return "Update Kata Sandi Berhasil";
+            }else{
+                return "Update Kata Sandi Gagal";
+            }
+        }
+    }
+
+    // Daftar Pengajuan Pinjaman (setuju / tolak)
+    function DPJ($pesan,$id){
+        $pesan = $this->mysqlEscapeString($pesan);
+        $result = $this->conn->query("update peminjaman SET peminjaman_status='$pesan' where peminjaman_id='$id'");
+        if($result){
+            if($pesan == "ditolak"){
+                return "Pengajuan pinjaman id ".$id." Berhasil ditolak.";
+            }else{
+                return "Pengajuan pinjaman id ".$id." Berhasil disetujui.";
+            }
+        }else{
+            return "Kegagalan Sistem (cek file DataAkses fungsi DPJ";
+        }
+
+    }
+
+    // Peminjaman berlangsung file sedang-meminjam.php
+    function SM($pesan,$id){
+        $result = $this->conn->query("update peminjaman SET peminjaman_lunas='$pesan' where peminjaman_id='$id'");
+        if($result){
+            return "Pinjaman id ".$id." Sudah Lunas.";
+        }
+    }
+
+    // hapus peminjaman file semua-peminjaman.php
+    function hapusPeminjaman($id){
+        $result = $this->conn->query("delete from peminjaman where peminjaman_id='$id'");
+        if($result){
+            return "Pinjaman id ".$id." Berhasil di hapus.";
+        }else{
+            return "Penghapusan Gagal";
+        }
+    }
+
+    /******************************************************************************
+     *              FUNGSI PEMBANTU KONEKSI DAN PENGAMBILAN DATA
+     *    BAWAAN PHP TAPI DI RUBAH NAMING CONVENSIONNYA MENJADI CAMELCASE)
+     ******************************************************************************/
     // untuk escape string (agar data sesuai format mysql)
     function mysqlEscapeString($result)
     {

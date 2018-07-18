@@ -21,6 +21,22 @@ include "header.php";
             <div class="row">
                 <!-- left column -->
                 <div class="col-md-6">
+                    <?php
+                    if(isset($_POST["submit"])){
+                        $jangkawaktu    = $_POST["jangkawaktu"];
+                        $jangkawaktu    = $dataAkses->mysqlEscapeString($jangkawaktu);
+                        $jumlahuang     = $_POST["jumlahuang"];
+                        $jumlahuang     = $dataAkses->mysqlEscapeString($jumlahuang);
+
+                        echo '
+                        <div class="callout callout-info">
+                            <h4>';
+                        echo $dataAkses->tambahPeminjaman($dataUser->id,$dataUser->namalengkap,$jangkawaktu,$jumlahuang);
+                        echo '</h4>
+                        </div>
+                    ';
+                    }
+                    ?>
                     <!-- general form elements -->
                     <div class="box box-primary">
                         <div class="box-header with-border">
@@ -28,16 +44,16 @@ include "header.php";
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
-                        <form role="form">
+                        <form role="form" action="" method="post">
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="exampleInpuNama">Nama Peminjam</label>
-                                    <input type="text" class="form-control" id="exampleInputNama" value="NAMA KAMU" disabled>
+                                    <input type="text" class="form-control" id="exampleInputNama" value="<?php echo $dataUser->nama;?>" disabled>
                                 </div>
                                 <!-- select -->
                                 <div class="form-group">
                                     <label>Jangka Waktu Pinjaman</label>
-                                    <select class="form-control" required>
+                                    <select class="form-control" name="jangkawaktu" required>
                                         <option value="pendek">Pendek (kurang dari 5 bulan)</option>
                                         <option value="sedang">Sedang (5 sampai 12 bulan)</option>
                                         <option value="panjang">Panjang (12 sampai 20 bulan)</option>
@@ -57,7 +73,7 @@ include "header.php";
                             <!-- /.box-body -->
 
                             <div class="box-footer">
-                                <button type="submit" class="btn btn-primary pull-right">Sumbit</button>
+                                <button type="submit" class="btn btn-primary pull-right" name="submit">Sumbit</button>
                             </div>
                         </form>
                     </div>

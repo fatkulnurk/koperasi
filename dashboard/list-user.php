@@ -20,6 +20,27 @@ include "header.php";
     <!-- Main content -->
     <section class="content container-fluid">
 
+        <?php
+        // rubah hak akses
+        if(isset($_GET["akses"]) && isset($_GET['id'])){
+            $akses  = $_GET['akses'];
+            $akses  = $dataAkses->mysqlEscapeString($akses);
+            $id     = $_GET['id'];
+            $id     = $dataAkses->mysqlEscapeString($id);
+
+            echo '<div class="callout callout-info"><h4>';
+            echo $dataAkses->updateHakAkses($id,$akses);
+            echo '</h4></div>';
+        }elseif (isset($_GET['hapus'])){
+            $id     = $_GET['hapus'];
+            $id     = $dataAkses->mysqlEscapeString($id);
+
+            echo '<div class="callout callout-info"><h4>';
+            echo $dataAkses->hapusUserTertentu($id);
+            echo '</h4></div>';
+        }
+        ?>
+
         <div class="row">
             <div class="col-xs-12">
                 <div class="box">
@@ -38,46 +59,30 @@ include "header.php";
                                 <th>Kelahiran</th>
                                 <th>Hak Akses</th>
                                 <th>Kelola Hak Akses</th>
-                                <th>Hapus</th>
+                                <th>Hapus Akun</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>Trident</td>
-                                <td>Internet
-                                    Explorer 5.0
-                                </td>
-                                <td>Win 95+</td>
-                                <td>5</td>
-                                <td>C</td>
-                                <td>C</td>
-                                <td class="text-center"><a class="btn btn-warning btn-flat">User</a> <a class="btn btn-info btn-flat">Pengurus</a> <a class="btn btn-success btn-flat">Admin</a></td>
-                                <td><a class="btn btn-danger btn-flat">Hapus</a></td>
-                            </tr>
-                            <tr>
-                                <td>Trident</td>
-                                <td>Internet
-                                    Explorer 5.0
-                                </td>
-                                <td>Win 95+</td>
-                                <td>5</td>
-                                <td>C</td>
-                                <td>C</td>
-                                <td class="text-center"><a class="btn btn-warning btn-flat">User</a> <a class="btn btn-info btn-flat">Pengurus</a> <a class="btn btn-success btn-flat">Admin</a></td>
-                                <td><a class="btn btn-danger btn-flat">Hapus</a></td>
-                            </tr>
-                            <tr>
-                                <td>Trident</td>
-                                <td>Internet
-                                    Explorer 5.0
-                                </td>
-                                <td>Win 95+</td>
-                                <td>5</td>
-                                <td>C</td>
-                                <td>C</td>
-                                <td class="text-center"><a class="btn btn-warning btn-flat">User</a> <a class="btn btn-info btn-flat">Pengurus</a> <a class="btn btn-success btn-flat">Admin</a></td>
-                                <td><a class="btn btn-danger btn-flat">Hapus</a></td>
-                            </tr>
+                            <?php
+                            // ambil semua data di tabel user dan meyimpannya pada variabel data
+                            $data = $dataAkses->ambilUsers();
+                            while($a = $dataAkses->fetchAssoc($data)){
+                                echo '
+                                <tr>
+                                <td>'.$a["user_id"].'</td>
+                                <td>'.$a["user_namalengkap"].'</td>
+                                <td>'.$a["user_email"].'</td>
+                                <td>'.$a["user_kelamin"].'</td>
+                                <td>'.$a["user_umur"].'</td>
+                                <td>';
+                                echo infoHakAksesAkun($a["user_tipe_akun"]).'</td>
+                                <td class="text-center"><a class="btn btn-warning btn-flat" href="?akses=3&id='.$a["user_id"].'">User</a> <a class="btn btn-info btn-flat" href="?akses=2&id='.$a["user_id"].'">Pengurus</a> <a class="btn btn-success btn-flat" href="?akses=1&id='.$a["user_id"].'">Admin</a></td>
+                                <td class="text-center"><a class="btn btn-danger btn-flat" href="?hapus='.$a["user_id"].'">Hapus</a></td>
+                                </tr>                                
+                                ';
+                            }
+                            ?>
+                            </tbody>
                             <tfoot>
                             <tr>
                                 <th>No</th>
@@ -87,7 +92,7 @@ include "header.php";
                                 <th>Kelahiran</th>
                                 <th>Hak Akses</th>
                                 <th>Kelola Hak Akses</th>
-                                <th>Hapus</th>
+                                <th>Hapus Akun</th>
                             </tr>
                             </tfoot>
                         </table>

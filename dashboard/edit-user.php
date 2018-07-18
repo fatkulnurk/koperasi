@@ -20,6 +20,65 @@ include "header.php";
     <!-- Main content -->
     <section class="content container-fluid">
 
+        <?php
+        // Form Edit data
+        if(isset($_GET['id'])){
+            $id     = $_GET['id'];
+            $id     = $dataAkses->mysqlEscapeString($id);
+
+            $dataUser->setId($id);
+            /*echo '<div class="callout callout-info"><h4>';
+            echo $dataAkses->updateHakAkses($id,$akses);
+            echo '</h4></div>';*/
+
+            echo ' 
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Profil Anda</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <form role="form" action="?id='.$id.'" method="post">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label for="exampleInput">Email</label>
+                                    <input name="email" type="email" class="form-control" id="exampleInput" value="'.$dataUser->email.'" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInpuNama">Nama Lengkap</label>
+                                    <input name="namalengkap" type="text" class="form-control" id="exampleInputNama" value="'.$dataUser->nama.'" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInput">Tanggal Lahir</label>
+                                    <input name="tgl" type="date" class="form-control" id="exampleInput" value="'.$dataUser->umur.'" required>
+                                </div> 
+                            </div>
+                            <!-- /.box-body -->
+
+                            <div class="box-footer">
+                                <button type="submit" class="btn btn-primary pull-right" name="perbarui">Perbarui</button>
+                            </div>
+                        </form>
+                    </div>
+            ';
+        }
+
+        if(isset($_POST['perbarui'])){
+            $id    = $_GET['id'];
+            $email = $_POST['email'];
+            $nama  = $_POST['namalengkap'];
+            $tgl   = $_POST['tgl'];
+
+            echo '<div class="callout callout-info"><h4>';
+            echo $dataAkses->updateDataProfile($id,$email,$nama,$tgl);
+            echo '</h4>
+<p>Update data kelihatan jika anda mereload halaman ini.</p>
+</div>';
+        }
+
+
+        ?>
+
         <div class="row">
             <div class="col-xs-12">
                 <div class="box">
@@ -40,26 +99,22 @@ include "header.php";
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>Trident</td>
-                                <td>Internet
-                                    Explorer 5.0
-                                </td>
-                                <td>Win 95+</td>
-                                <td>5</td>
-                                <td>C</td>
-                                <td class="text-center"><a class="btn btn-primary btn-flat">Edit Data</a></td>
-                            </tr>
-                            <tr>
-                                <td>Trident</td>
-                                <td>Internet
-                                    Explorer 5.0
-                                </td>
-                                <td>Win 95+</td>
-                                <td>5</td>
-                                <td>C</td>
-                                <td class="text-center"><a class="btn btn-primary btn-flat">Edit Data</a></td>
-                            </tr>
+                            <?php
+                            // ambil semua data di tabel user dan meyimpannya pada variabel data
+                            $data = $dataAkses->ambilUsers();
+                            while($a = $dataAkses->fetchAssoc($data)){
+                                echo '
+                                <tr>
+                                <td>'.$a["user_id"].'</td>
+                                <td>'.$a["user_namalengkap"].'</td>
+                                <td>'.$a["user_email"].'</td>
+                                <td>'.$a["user_kelamin"].'</td>
+                                <td>'.$a["user_umur"].'</td>
+                                <td class="text-center"><a class="btn btn-primary btn-flat" href="?id='.$a["user_id"].'">Edit Data</a></td>
+                                </tr>                                
+                                ';
+                            }
+                            ?>
                             <tfoot>
                             <tr>
                                 <th>No</th>
