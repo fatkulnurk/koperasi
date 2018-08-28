@@ -49,6 +49,18 @@ include "header.php";
 <p>Ganti Halaman lalu akses halaman ini lagi untuk melihat perubahan.</p>
                         </div>
                     ';
+            }elseif (isset($_POST['updatetagihan'])){
+                $bri        = $dataAkses->mysqlEscapeString($_POST['bri']);
+                $bpd        = $dataAkses->mysqlEscapeString($_POST['bpd']);
+                $bpr        = $dataAkses->mysqlEscapeString($_POST['bpr']);
+                $kpri       = $dataAkses->mysqlEscapeString($_POST['kpri']);
+                $sekbid     = $dataAkses->mysqlEscapeString($_POST['sekbid']);
+                $lain       = $dataAkses->mysqlEscapeString($_POST['lain']);
+
+
+                echo '<div class="callout callout-info"><h4>';
+                echo $dataAkses->updateTagihanBulanan($dataUser->id,$bri,$bpd,$bpr,$kpri,$sekbid,$lain);
+                echo '</h4><p>Ganti Halaman lalu akses halaman ini lagi untuk melihat perubahan.</p></div>';
             }
             ?>
             <div class="row">
@@ -137,6 +149,49 @@ include "header.php";
                         </form>
                     </div>
                 </div>
+            </div>
+
+            <div class="box box-primary">
+                <form action="" method="post">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Tanggungan Yang Harus Dibayar Perbulan</h3>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInpuNama">Tanggungan BRI</label>
+                                <input name="bri" type="text" class="form-control" id="exampleInputNama" value="<?php echo $dataUser->tanggunganBri;?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInpuNama">Tanggungan BPD</label>
+                                <input name="bpd" type="text" class="form-control" id="exampleInputNama" value="<?php echo $dataUser->tanggunganBpd;?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInpuNama">Tanggungan BPR</label>
+                                <input name="bpr" type="text" class="form-control" id="exampleInputNama" value="<?php echo $dataUser->tanggunganBpr;?>">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInpuNama">Tanggungan KPRI EDI PENI</label>
+                                <input name="kpri" type="text" class="form-control" id="exampleInputNama" value="<?php echo $dataUser->tanggunganKpri;?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInpuNama">Tanggungan SEKBID</label>
+                                <input name="sekbid" type="text" class="form-control" id="exampleInputNama" value="<?php echo $dataUser->tanggunganSekbid;?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInpuNama">Tanggungan Lain Lain</label>
+                                <input name="lain" type="text" class="form-control" id="exampleInputNama" value="<?php echo $dataUser->tanggunganLainnya;?>">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary pull-right" name="updatetagihan">Update Data</button>
+                </div>
+                </form>
             </div>
 
         </section>

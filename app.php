@@ -1,19 +1,23 @@
 <?php
+/*
+ *  File ini digunakan untuk import pengaturan serta class yang di include di semua halaman
+ */
+
+// untuk crud data ke database
 require_once "app/DataAkses.php";
-require_once "app/functions.php";
+
+// class informasi user sekarang
 require_once "app/User.php";
 
 // object Akses data
 $dataAkses = new DataAkses();
 
-// object data user
+/*
+ * Object Data User
+ * digunakan untuk mendapatkan informasi dari user tertentu
+ */
 $dataUser = new User();
 
+// include fungsi tambahan
+require_once "app/functions.php";
 
-//
-//$conn = mysqli_connect("localhost","root","","koperasi");
-//$result = mysqli_query($conn,"select * from user");
-//
-//while($row = $result->fetch_assoc()) {
-//    echo $row["user_namalengkap"]. "<br>";
-//}

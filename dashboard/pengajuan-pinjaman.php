@@ -50,7 +50,32 @@ include "header.php";
                                     <label for="exampleInpuNama">Nama Peminjam</label>
                                     <input type="text" class="form-control" id="exampleInputNama" value="<?php echo $dataUser->nama;?>" disabled>
                                 </div>
+                                <div class="form-group">
+                                    <label for="exampleInpuNama">Nip</label>
+                                    <input type="text" class="form-control" id="exampleInputNama" value="<?php echo $dataUser->nip;?>" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInpuNama">Tanggal Lahir</label>
+                                    <input type="text" class="form-control" id="exampleInputNama" value="<?php echo $dataUser->umur;?>" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInpuNama">Pangkat / Golongan</label>
+                                    <input type="text" class="form-control" id="exampleInputNama" value="<?php echo $dataUser->golongan;?>" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInpuNama">Jabatan</label>
+                                    <input type="text" class="form-control" id="exampleInputNama" value="<?php echo $dataUser->pekerjaan;?>" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInpuNama">Unit Kerja</label>
+                                    <input type="text" class="form-control" id="exampleInputNama" value="<?php echo $dataUser->unitkerja;?>" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInpuNama">No Hp</label>
+                                    <input type="text" class="form-control" id="exampleInputNama" value="<?php echo $dataUser->nohp;?>" disabled>
+                                </div>
                                 <!-- select -->
+                                <!--
                                 <div class="form-group">
                                     <label>Jangka Waktu Pinjaman</label>
                                     <select class="form-control" name="jangkawaktu" required>
@@ -59,10 +84,43 @@ include "header.php";
                                         <option value="panjang">Panjang (12 sampai 20 bulan)</option>
                                     </select>
                                 </div>
+                                -->
+
+                                <div class="form-group">
+                                    <label for="exampleInpuNama">Jangka Waktu Pinjaman</label>
+                                    <input type="number" class="form-control" id="exampleInputNama" placeholder="Masukan Jumlah Bulan" name="jangkawaktu">
+                                </div>
+
                                 <h4>Jumlah Uang</h4>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-money"></i></span>
                                     <input class="form-control" placeholder="Mata Uang Rupiah" type="number" name="jumlahuang" required>
+                                </div>
+                                <hr>
+                                <h4>Tanggungan Yang Harus Dibayar Tiap Bulan</h4>
+                                <div class="form-group">
+                                    <label for="exampleInpuNama">Tanggungan BRI</label>
+                                    <input type="text" class="form-control" id="exampleInputNama" value="<?php echo $dataUser->tanggunganBri;?>" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInpuNama">Tanggungan BPD</label>
+                                    <input type="text" class="form-control" id="exampleInputNama" value="<?php echo $dataUser->tanggunganBpd;?>" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInpuNama">Tanggungan BPR</label>
+                                    <input type="text" class="form-control" id="exampleInputNama" value="<?php echo $dataUser->tanggunganBpr;?>" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInpuNama">Tanggungan KPRI EDI PENI</label>
+                                    <input type="text" class="form-control" id="exampleInputNama" value="<?php echo $dataUser->tanggunganKpri;?>" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInpuNama">Tanggungan SEKBID</label>
+                                    <input type="text" class="form-control" id="exampleInputNama" value="<?php echo $dataUser->tanggunganSekbid;?>" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInpuNama">Tanggungan Lain Lain</label>
+                                    <input type="text" class="form-control" id="exampleInputNama" value="<?php echo $dataUser->tanggunganLainnya;?>" disabled>
                                 </div>
                                 <div class="checkbox">
                                     <label>
@@ -99,6 +157,11 @@ include "header.php";
                                 <h4>Jumlah Pinjaman</h4>
                                 <p>Isi dengan nominal uang yang ingin anda pinjam, mata uang adalah <span class="text-bold">Rupiah</span> dan penulisan tanpa tanda koma atau titik.</p>
                                 <p>Contohnya anda pinjam <span class="text-danger">1.000.000</span> maka <span class="text-bold">CUKUP TULIS 1000000</span></p>
+                            </div>
+                            <hr>
+                            <div class="box-group">
+                                <h4>Edit Tanggungan Yang Anda Miliki</h4>
+                                <p>untuk mengedit tanggungan yang anda miliki maka anda cukup kunjungi halaman profil, lali rubah data di halaman profil anda.</p>
                             </div>
                         </div>
                     </div>

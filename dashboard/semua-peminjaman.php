@@ -1,5 +1,9 @@
 <?php
 include "header.php";
+include "../app/FuzzyTsukamoto.php";
+if($dataUser->isPengurus() != true){
+    warning_auth();
+}
 ?>
 
 <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
@@ -60,8 +64,11 @@ include "header.php";
                                 <td>'.$a["peminjaman_nominal"].'</td>
                                 <td>'.$a["peminjaman_jangka_waktu"].'</td>
                                 <td>'.$a["peminjaman_timestap"].'</td>
-                                <td>'.$a["peminjaman_status"].'</td>     
-                                <td class="text-success text-bold">Sistem Belum Bisa</td>
+                                <td>'.$a["peminjaman_status"].'</td>  ';
+                                $fuzzy = new FuzzyTsukamoto($a["peminjaman_user_id"],$a["peminjaman_nominal"],$a["peminjaman_jangka_waktu"]);
+
+                                echo '
+                                <td class="text-success text-bold">'.$fuzzy->hasilPeminjam().'</td>
                                 <td class="text-center"><a class="btn btn-danger btn-flat" href="?id='.$a["peminjaman_id"].'">Hapus</a></td>
                                 </tr>
                                 ';

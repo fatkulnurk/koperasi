@@ -92,8 +92,9 @@ class DataAkses extends Db
     }
 
     // daftar user baru
-    function daftar($email,$nama,$kelamin,$gaji,$umur,$pekerjaan,$password){
-        $result = $this->conn->query("INSERT INTO user (user_email, user_namalengkap, user_kelamin, user_gaji, user_umur, user_pekerjaan, user_password) VALUES ('$email','$nama','$kelamin','$gaji','$umur','$pekerjaan','$password');");
+    function daftar($nip,$email,$nama,$kelamin,$gaji,$sisa_gaji,$umur,$golongan,$unitkerja,$nohp,$pekerjaan,$password,$tanggunganbri,$tanggunganbpd,$tanggunganbpr,$tanggungankpri,$tanggungansekbid,$tanggunganlainlain){
+        // $result = $this->conn->query("INSERT INTO user (user_email, user_namalengkap, user_kelamin, user_gaji, user_umur, user_pekerjaan, user_password) VALUES ('$email','$nama','$kelamin','$gaji','$umur','$pekerjaan','$password');");
+        $result = $this->conn->query("INSERT INTO user (user_nip, user_email, user_namalengkap, user_kelamin, user_gaji,user_sisa_gaji, user_umur, user_golongan, user_unitkerja, user_nohp, user_pekerjaan, user_password, user_tanggungan_bri, user_tanggungan_bpd, user_tanggungan_bpr, user_tanggungan_kpriedipeni,user_tanggungan_sekbid, user_tanggungan_lainlain) VALUES ('$nip','$email','$nama','$kelamin','$gaji','$sisa_gaji','$umur','$golongan','$unitkerja','$nohp','$pekerjaan','$password','$tanggunganbri','$tanggunganbpd','$tanggunganbpr','$tanggungankpri','$tanggungansekbid','$tanggunganlainlain');");
         if($result){
             return true;
         }else{
@@ -128,6 +129,16 @@ class DataAkses extends Db
             return "Update Hak Akses Berhasil";
         }else{
             return "Update Hak Akses Gagal";
+        }
+    }
+
+    // update tagihan yang harus dibayar bulanan
+    function updateTagihanBulanan($id,$bri,$bpd,$bpr,$kpri,$sekbid,$lain){
+        $result = $this->conn->query("UPDATE user SET user_tanggungan_bri='$bri', user_tanggungan_bpd='$bpd', user_tanggungan_bpr='$bpr', user_tanggungan_kpriedipeni='$kpri', user_tanggungan_sekbid='$sekbid', user_tanggungan_lainlain='$lain' WHERE user_id='$id'");
+        if($result){
+            return "Update Tagihan Bulanan Berhasil.";
+        }else{
+            return "Update Tagihan Bulanan Gagal.";
         }
     }
 

@@ -130,19 +130,38 @@ if ($_SESSION['masuk'] != "sukses"){
                 <li><a href="./index.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
                 <li><a href="./pengajuan-pinjaman.php"><i class="fa fa-money"></i> <span>Pengajuan Pinjaman</span></a></li>
                 <li><a href="./status-pinjaman.php"><i class="fa fa-eye"></i> <span>Status Pinjaman</span></a></li>
-                <li class="treeview">
-                    <a href="#"><i class="fa fa-users"></i> <span>Pengurus</span>
-                        <span class="pull-right-container">
+                <?php
+                /*
+                 * maksudnya ini untuk cek apakah dia sebagai admin atau pengurus
+                 * jika tipe akun 3 berarti user biasa (anggota)
+                 * jika tipe akun bernilai 2 berarti pengurus
+                 * jika tipe akun bernilai 1 maka dia admin
+                 */
+
+                // apakah dia admin atau pengurus, jika iya maka tampilkan block menu pengurus
+                if(($dataUser->isPengurus() == true) || ($dataUser->isAdmin() == true)){
+                    ?>
+
+                    <li class="treeview">
+                        <a href="#"><i class="fa fa-users"></i> <span>Pengurus</span>
+                            <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="./daftar-pengajuan.php"><i class="fa fa-money"></i> Pengajuan Pinjaman Terbaru</a></li>
-                        <li><a href="./sedang-meminjam.php"><i class="fa fa-grav"></i> Sedang Meminjam</a></li>
-                        <li><a href="./pinjaman-sudah-lunas.php"><i class="fa fa-grav"></i> Pinjaman Sudah Lunas</a></li>
-                        <li><a href="./semua-peminjaman.php"><i class="fa fa-address-book"></i> Semua Peminjaman</a></li>
-                    </ul>
-                </li>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="./daftar-pengajuan.php"><i class="fa fa-money"></i> Pengajuan Pinjaman Terbaru</a></li>
+                            <li><a href="./sedang-meminjam.php"><i class="fa fa-grav"></i> Sedang Meminjam</a></li>
+                            <li><a href="./pinjaman-sudah-lunas.php"><i class="fa fa-grav"></i> Pinjaman Sudah Lunas</a></li>
+                            <li><a href="./semua-peminjaman.php"><i class="fa fa-address-book"></i> Semua Peminjaman</a></li>
+                        </ul>
+                    </li>
+                <?php
+                }
+
+                // apakah dia admin, jika ia admin maka tampilkan block menu admin
+//                if($dataUser->getTipeAkun() < 2){
+                if($dataUser->isAdmin() == true){
+                ?>
                 <li class="treeview">
                     <a href="#"><i class="fa fa-user-secret"></i> <span>Admin</span>
                         <span class="pull-right-container">
@@ -154,6 +173,9 @@ if ($_SESSION['masuk'] != "sukses"){
                         <li><a href="./edit-user.php"><i class="fa fa-pencil"></i> Rubah Data User</a></li>
                     </ul>
                 </li>
+                <?php
+                }
+                ?>
             </ul>
             <!-- /.sidebar-menu -->
         </section>

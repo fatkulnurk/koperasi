@@ -1,5 +1,8 @@
 <?php
 include "header.php";
+if(($dataUser->isPengurus() != true)){
+    warning_auth();
+}
 ?>
 
 <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">

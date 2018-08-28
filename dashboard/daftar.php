@@ -46,12 +46,13 @@ include "../app.php";
   </div>
 
   <div class="register-box-body">
-    <p class="login-box-msg">Pendaftaran User Baru</p>
+    <h4 class="login-box-msg"><b>Pendaftaran User Baru</b></h4>
 
       <?php
       if(isset($_POST['daftar'])){
           // mengambil data dari tabel user
-          $result = $dataAkses->daftar($dataAkses->mysqlEscapeString($_POST["email"]),$dataAkses->mysqlEscapeString($_POST["namalengkap"]),$dataAkses->mysqlEscapeString($_POST["jeniskelamin"]),$dataAkses->mysqlEscapeString($_POST["gaji"]),$dataAkses->mysqlEscapeString($_POST["umur"]),$dataAkses->mysqlEscapeString($_POST["pekerjaan"]),md5($dataAkses->mysqlEscapeString($_POST["password"])));
+          // $result = $dataAkses->daftar($dataAkses->mysqlEscapeString($_POST['nip']), $dataAkses->mysqlEscapeString($_POST["email"]),$dataAkses->mysqlEscapeString($_POST["namalengkap"]),$dataAkses->mysqlEscapeString($_POST["jeniskelamin"]),$dataAkses->mysqlEscapeString($_POST["gaji"]),$dataAkses->mysqlEscapeString($_POST['sisagaji']), $dataAkses->mysqlEscapeString($_POST["umur"]),$dataAkses->mysqlEscapeString($_POST['golongan']), $dataAkses->mysqlEscapeString($_POST['unitkerja']), $dataAkses->mysqlEscapeString($_POST['nohp']), $dataAkses->mysqlEscapeString($_POST["pekerjaan"]),md5($dataAkses->mysqlEscapeString($_POST["password"]),$dataAkses->mysqlEscapeString($_POST['tanggunganbri']),$dataAkses->mysqlEscapeString($_POST['tanggunganbpd']), $dataAkses->mysqlEscapeString($_POST['tanggunganbpr']), $dataAkses->mysqlEscapeString($_POST['tanggungankpri']), $dataAkses->mysqlEscapeString($_POST['tanggungansekbid']),$dataAkses->mysqlEscapeString($_POST['tanggunganlainlain'])));
+          $result = $dataAkses->daftar($dataAkses->mysqlEscapeString($_POST['nip']), $dataAkses->mysqlEscapeString($_POST["email"]),$dataAkses->mysqlEscapeString($_POST["namalengkap"]),$dataAkses->mysqlEscapeString($_POST["jeniskelamin"]),$dataAkses->mysqlEscapeString($_POST["gaji"]),$dataAkses->mysqlEscapeString($_POST['sisagaji']), $dataAkses->mysqlEscapeString($_POST["umur"]),$dataAkses->mysqlEscapeString($_POST['golongan']), $dataAkses->mysqlEscapeString($_POST['unitkerja']), $dataAkses->mysqlEscapeString($_POST['nohp']), $dataAkses->mysqlEscapeString($_POST["pekerjaan"]),md5($dataAkses->mysqlEscapeString($_POST["password"])),$dataAkses->mysqlEscapeString($_POST['tanggunganbri']),$dataAkses->mysqlEscapeString($_POST['tanggunganbpd']), $dataAkses->mysqlEscapeString($_POST['tanggunganbpr']), $dataAkses->mysqlEscapeString($_POST['tanggungankpri']), $dataAkses->mysqlEscapeString($_POST['tanggungansekbid']),$dataAkses->mysqlEscapeString($_POST['tanggunganlainlain']));
 
           // cek apakah login berhasil
           if($result){
@@ -72,16 +73,32 @@ include "../app.php";
       ?>
 
     <form method="post" action="">
-      <div class="form-group has-feedback">
-          <label class="text-info">Nama Lengkap</label>
-        <input type="text" class="form-control" name="namalengkap" placeholder="Nama Lengkap" required>
-        <span class="glyphicon glyphicon-user form-control-feedback"></span>
-      </div>
+        <div class="form-group has-feedback">
+            <label class="text-info">Nama Lengkap</label>
+            <input type="text" class="form-control" name="namalengkap" placeholder="Nama Lengkap" required>
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+            <label class="text-info">NIP</label>
+            <input type="text" class="form-control" name="nip" placeholder="Nip" required>
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        </div>
       <div class="form-group has-feedback">
           <label class="text-info">Email</label>
         <input type="email" class="form-control" name="email" placeholder="Email" required>
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
+        <div class="form-group has-feedback">
+            <label class="text-info">Password</label>
+            <input type="password" class="form-control" name="password" placeholder="Password" required>
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        </div>
+        <hr>
+        <div class="form-group has-feedback">
+            <label class="text-info">No HP</label>
+            <input type="text" class="form-control" name="nohp" placeholder="No Hp" required>
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        </div>
         <div class="form-group has-feedback">
             <label class="text-info">Tanggal Lahir</label>
             <input type="date" name="umur" class="form-control" required>
@@ -96,7 +113,18 @@ include "../app.php";
         </div>
         <hr>
         <div class="form-group has-feedback">
-            <input type="text" class="form-control" name="pekerjaan" placeholder="Pekerjaan" required>
+            <label class="text-info">Informasi Pekerjaan dan Gaji</label>
+        </div>
+        <div class="form-group has-feedback">
+            <input type="text" class="form-control" name="pekerjaan" placeholder="Pekerjaan (jabatan)" required>
+            <span class="glyphicon glyphicon-bookmark form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+            <input type="text" class="form-control" name="golongan" placeholder="Golongan" required>
+            <span class="glyphicon glyphicon-bookmark form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+            <input type="text" class="form-control" name="unitkerja" placeholder="Unit Kerja" required>
             <span class="glyphicon glyphicon-bookmark form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
@@ -104,20 +132,49 @@ include "../app.php";
             <span class="glyphicon glyphicon-usd form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-            <input type="password" class="form-control" name="password" placeholder="Password" required>
-            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            <input type="number" class="form-control" name="sisagaji" placeholder="Sisa Gaji (tulis sisa gaji dari gaji pokok)" required>
+            <span class="glyphicon glyphicon-usd form-control-feedback"></span>
         </div>
+        <hr>
+        <div class="form-group has-feedback">
+            <label class="text-info">Daftar Tanggungan</label>
+        </div>
+        <div class="form-group has-feedback">
+            <input type="number" class="form-control" name="tanggunganbri" placeholder="Tanggungan BRI">
+            <span class="glyphicon glyphicon-usd form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+            <input type="number" class="form-control" name="tanggunganbpd" placeholder="Tanggungan BPD">
+            <span class="glyphicon glyphicon-usd form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+            <input type="number" class="form-control" name="tanggunganbpr" placeholder="Tanggungan BPR">
+            <span class="glyphicon glyphicon-usd form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+            <input type="number" class="form-control" name="tanggungankpri" placeholder="Tanggungan KPRI Edipeni">
+            <span class="glyphicon glyphicon-usd form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+            <input type="number" class="form-control" name="tanggungansekbid" placeholder="Tanggungan SEKBID">
+            <span class="glyphicon glyphicon-usd form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+            <input type="number" class="form-control" name="tanggunganlainlain" placeholder="Tanggungan Lain Lain">
+            <span class="glyphicon glyphicon-usd form-control-feedback"></span>
+        </div>
+
       <div class="row">
         <div class="col-xs-8">
           <div class="checkbox icheck">
             <label>
-              <input type="checkbox" required> I agree to the <a href="#">terms</a>
+              <input type="checkbox" required> I agree to the terms
             </label>
           </div>
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat" name="daftar">Register</button>
+          <button type="submit" class="btn btn-primary btn-block btn-flat" name="daftar">Daftar</button>
         </div>
         <!-- /.col -->
       </div>
