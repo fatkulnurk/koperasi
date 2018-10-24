@@ -1,32 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b916a4a7-48cc-4ee9-8bb0-d110b2edab6d" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/informasi.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/DataAkses.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DataAkses.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/DatabaseSettings.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DatabaseSettings.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Db.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Db.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/FuzzyTsukamoto.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/FuzzyTsukamoto.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/testing.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/testing.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/daftar-pengajuan.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/daftar-pengajuan.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/daftar.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/daftar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/edit-user.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/edit-user.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/keluar.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/keluar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/list-user.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/list-user.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/pengajuan-pinjaman.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/pengajuan-pinjaman.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/pinjaman-sudah-lunas.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/pinjaman-sudah-lunas.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/profil.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/profil.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/sedang-meminjam.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/sedang-meminjam.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/semua-peminjaman.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/semua-peminjaman.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/koperasi.zip" beforeDir="false" afterPath="$PROJECT_DIR$/koperasi-tanpa-dokumentasi.zip" afterDir="false" />
-    </list>
+    <list default="true" id="b916a4a7-48cc-4ee9-8bb0-d110b2edab6d" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,14 +59,15 @@
     <session id="-323146992">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="6" />
+          <entry key="project.closed" value="7" />
           <entry key="project.open.time.27" value="1" />
           <entry key="project.open.time.35" value="1" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.40" value="2" />
+          <entry key="project.open.time.46" value="1" />
           <entry key="project.open.time.51" value="1" />
           <entry key="project.open.time.80" value="1" />
-          <entry key="project.opened" value="7" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -130,12 +106,12 @@
     <favorites_list name="koperasi" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dashboard/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="526">
-              <caret line="39" column="2" lean-forward="true" selection-start-line="39" selection-start-column="2" selection-end-line="39" selection-end-column="2" />
+            <state relative-caret-position="663">
+              <caret line="39" column="2" selection-start-line="39" selection-start-column="2" selection-end-line="39" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -143,8 +119,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dashboard/login.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="526">
-              <caret line="123" column="7" lean-forward="true" selection-start-line="123" selection-start-column="7" selection-end-line="123" selection-end-column="7" />
+            <state relative-caret-position="2091">
+              <caret line="123" column="7" selection-start-line="123" selection-start-column="7" selection-end-line="123" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -152,8 +128,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dashboard/pengajuan-pinjaman.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1142">
-              <caret line="87" column="100" lean-forward="true" selection-start-line="87" selection-start-column="100" selection-end-line="87" selection-end-column="100" />
+            <state relative-caret-position="1479">
+              <caret line="87" column="100" selection-start-line="87" selection-start-column="100" selection-end-line="87" selection-end-column="100" />
             </state>
           </provider>
         </entry>
@@ -161,7 +137,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dashboard/pinjaman-sudah-lunas.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-854">
+            <state relative-caret-position="561">
               <caret line="33" selection-start-line="33" selection-end-line="33" />
             </state>
           </provider>
@@ -170,8 +146,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dashboard/profil.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-989">
-              <caret line="103" column="16" lean-forward="true" selection-start-line="103" selection-start-column="16" selection-end-line="103" selection-end-column="16" />
+            <state relative-caret-position="1751">
+              <caret line="103" column="16" selection-start-line="103" selection-start-column="16" selection-end-line="103" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -179,8 +155,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dashboard/sedang-meminjam.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-242">
-              <caret line="61" column="83" lean-forward="true" selection-start-line="61" selection-start-column="83" selection-end-line="61" selection-end-column="83" />
+            <state relative-caret-position="1037">
+              <caret line="61" column="83" selection-start-line="61" selection-start-column="83" selection-end-line="61" selection-end-column="83" />
             </state>
           </provider>
         </entry>
@@ -188,29 +164,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dashboard/semua-peminjaman.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
+            <state relative-caret-position="1139">
               <caret line="67" column="47" selection-start-line="67" selection-start-column="47" selection-end-line="67" selection-end-column="47" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dashboard/status-pinjaman.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="337">
               <caret line="65" selection-start-line="65" selection-end-line="65" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="59" lean-forward="true" selection-start-line="16" selection-start-column="59" selection-end-line="16" selection-end-column="59" />
-              <folding>
-                <element signature="e#6#104#0#PHP" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -419,16 +383,18 @@
       <workItem from="1533205318338" duration="9000" />
       <workItem from="1540335501070" duration="3789000" />
       <workItem from="1540351662007" duration="2795000" />
+      <workItem from="1540366882656" duration="608000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="129460000" />
+    <option name="totallyTimeSpent" value="130068000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21028744" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21331316" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.2496749" />
       <window_info id="Favorites" order="2" side_tool="true" weight="0.32899868" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -670,13 +636,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7499">
           <caret line="647" column="38" lean-forward="true" selection-start-line="647" selection-start-column="38" selection-end-line="647" selection-end-column="38" />
-          <folding>
-            <element signature="e#6#18#0#PHP" expanded="true" />
-            <element signature="n#cekGaji#0;n#FuzzyTsukamoto#0;n#!!top" />
-            <element signature="n#cekBesarPinjaman#0;n#FuzzyTsukamoto#0;n#!!top" />
-            <element signature="n#cekJangkaWaktu#0;n#FuzzyTsukamoto#0;n#!!top" />
-            <element signature="n#dataUser#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -738,50 +697,60 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dashboard/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="526">
-          <caret line="39" column="2" lean-forward="true" selection-start-line="39" selection-start-column="2" selection-end-line="39" selection-end-column="2" />
+        <state relative-caret-position="663">
+          <caret line="39" column="2" selection-start-line="39" selection-start-column="2" selection-end-line="39" selection-end-column="2" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dashboard/login.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="526">
-          <caret line="123" column="7" lean-forward="true" selection-start-line="123" selection-start-column="7" selection-end-line="123" selection-end-column="7" />
+        <state relative-caret-position="2091">
+          <caret line="123" column="7" selection-start-line="123" selection-start-column="7" selection-end-line="123" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dashboard/pengajuan-pinjaman.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1142">
-          <caret line="87" column="100" lean-forward="true" selection-start-line="87" selection-start-column="100" selection-end-line="87" selection-end-column="100" />
+        <state relative-caret-position="1479">
+          <caret line="87" column="100" selection-start-line="87" selection-start-column="100" selection-end-line="87" selection-end-column="100" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dashboard/pinjaman-sudah-lunas.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-854">
+        <state relative-caret-position="561">
           <caret line="33" selection-start-line="33" selection-end-line="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dashboard/profil.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-989">
-          <caret line="103" column="16" lean-forward="true" selection-start-line="103" selection-start-column="16" selection-end-line="103" selection-end-column="16" />
+        <state relative-caret-position="1751">
+          <caret line="103" column="16" selection-start-line="103" selection-start-column="16" selection-end-line="103" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dashboard/sedang-meminjam.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-242">
-          <caret line="61" column="83" lean-forward="true" selection-start-line="61" selection-start-column="83" selection-end-line="61" selection-end-column="83" />
+        <state relative-caret-position="1037">
+          <caret line="61" column="83" selection-start-line="61" selection-start-column="83" selection-end-line="61" selection-end-column="83" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dashboard/semua-peminjaman.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
+        <state relative-caret-position="1139">
           <caret line="67" column="47" selection-start-line="67" selection-start-column="47" selection-end-line="67" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="59" selection-start-line="16" selection-start-column="59" selection-end-line="16" selection-end-column="59" />
+          <folding>
+            <element signature="e#6#104#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -789,16 +758,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="337">
           <caret line="65" selection-start-line="65" selection-end-line="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="59" lean-forward="true" selection-start-line="16" selection-start-column="59" selection-end-line="16" selection-end-column="59" />
-          <folding>
-            <element signature="e#6#104#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
