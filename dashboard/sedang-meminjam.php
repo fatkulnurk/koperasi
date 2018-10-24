@@ -1,5 +1,7 @@
 <?php
 include "header.php";
+
+// cek rolenya, kalau dia bukan pengurus atau admin maka akan muncul pesan denied
 if(($dataUser->isPengurus() != true)){
     warning_auth();
 }
@@ -23,11 +25,15 @@ if(($dataUser->isPengurus() != true)){
     <!-- Main content -->
     <section class="content container-fluid">
         <?php
+
+        // mengupdate data, sudah lunas atau belum
         if(isset($_GET["status"]) && isset($_GET['id'])){
             $status = $_GET['status'];
             $id     = $_GET['id'];
 
             echo '<div class="callout callout-info"><h4>';
+
+            // menampilkan return hasil mengupdate data, entah itu return atau false
             echo $dataAkses->SM($status,$id);
             echo '</h4></div>';
         }

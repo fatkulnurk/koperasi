@@ -19,7 +19,13 @@ include "header.php";
     <section class="content container-fluid">
 
         <div class="callout callout-info">
-            <h4>Selamat Datang <?php echo $dataUser->namalengkap; ?></h4>
+            <h4>
+                Selamat Datang
+                <?php
+                // menampilkan nama lengkap user yang sedang login.
+                echo $dataUser->namalengkap;
+                ?>
+            </h4>
 
             <p>Halo, selamat datang di halaman dashboard pengguna, gunakan semua menu dengan bijak dan jika ada kesalahan
                 mohon memberitahukan ke kami.</p>

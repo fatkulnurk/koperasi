@@ -19,6 +19,8 @@ include "header.php";
         <section class="content container-fluid">
 
             <?php
+
+            // Jika tombol perbarui profile di klik maka akan menjalankan block proggram berikut ini
             if(isset($_POST["perbarui"])){
                 $pekerjaan      = $_POST["pekerjaan"];
                 $pekerjaan      = $dataAkses->mysqlEscapeString($pekerjaan);
@@ -27,13 +29,20 @@ include "header.php";
 
                 echo '
                         <div class="callout callout-info">
-                            <h4>';
+                            <h4>
+                ';
+
+                // menampilkan status perubahan gagal atau berhasil
                 echo $dataAkses->updateProfile($dataUser->id,$pekerjaan,$jumlahuang);
-                echo '</h4>
-<p>Ganti Halaman lalu akses halaman ini lagi untuk melihat perubahan.</p>
+
+                echo '
+                            </h4>
+                            <p>Ganti Halaman lalu akses halaman ini lagi untuk melihat perubahan.</p>
                         </div>
                     ';
             }elseif (isset($_POST['ganti'])){
+
+                // mngganti kata sandi
                 $katasandi      = $_POST["katasandi"];
                 $katasandi      = $dataAkses->mysqlEscapeString($katasandi);
                 $sandibaru      = $_POST["sandibaru"];
@@ -43,8 +52,12 @@ include "header.php";
 
                 echo '
                         <div class="callout callout-info">
-                            <h4>';
-                    echo $dataAkses->updatePassword($dataUser->id,$sandibaru,$sandibarubaru);
+                            <h4>
+                ';
+
+                // menampilkan pesan setelah mengupdate password
+                echo $dataAkses->updatePassword($dataUser->id,$sandibaru,$sandibarubaru);
+
                 echo '</h4>
 <p>Ganti Halaman lalu akses halaman ini lagi untuk melihat perubahan.</p>
                         </div>

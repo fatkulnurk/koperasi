@@ -48,7 +48,9 @@ include "../app.php";
   <div class="login-box-body">
     <p class="login-box-msg">Masukan Email dan Password Anda</p>
       <?php
+      // ketika form email dan password sudah di isi
       if(isset($_POST['email']) && isset($_POST['password'])){
+
           // mengambil data dari tabel user
           $result = $dataAkses->masuk($dataAkses->mysqlEscapeString($_POST['email']),$dataAkses->mysqlEscapeString($_POST['password']));
 
@@ -56,9 +58,11 @@ include "../app.php";
           if($result){
               $_SESSION['masuk'] = "sukses";
               if($_SESSION['masuk'] == "sukses"){
+                  // kalau berhasil maka akan di redirect ke dalaman index.php
                   header_location("./index.php");
               }
           }else{
+              // kalau gagal maka akan muncul pesan login gagal
               echo '
               <div class="callout callout-danger">
                   <h4>Login Gagal</h4>

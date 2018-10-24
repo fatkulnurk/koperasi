@@ -1,13 +1,19 @@
 <?php
+/*
+ * FILE UNTUK SEMUA FUNCTION
+ * */
+
 // fungsi untuk redirect
 function header_location($url){
     header("location:$url");
 }
 
+// redirect halaman
 function redirect_halaman($url){
     header("Location: $url"); /* Redirect browser */
 }
 
+// peringatan jika user memiliki akses
 function warning_auth(){
     die('
 

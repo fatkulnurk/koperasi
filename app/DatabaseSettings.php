@@ -1,10 +1,11 @@
 <?php
 class DatabaseSettings
 {
+    // Database variables
     var $settings;
+
     function getSettings()
     {
-        // Database variables
         // Host name
         $settings['dbhost']     = 'localhost';
         // Database name

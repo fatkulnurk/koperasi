@@ -22,7 +22,11 @@ include "header.php";
                 <!-- left column -->
                 <div class="col-md-6">
                     <?php
+
+                    // di cek apakan tombol pengajuan pinjamannya di klik, kalau di klik maka akan menjalankan block berikut
                     if(isset($_POST["submit"])){
+
+                        // assign nilai dari parameter ke variabel
                         $jangkawaktu    = $_POST["jangkawaktu"];
                         $jangkawaktu    = $dataAkses->mysqlEscapeString($jangkawaktu);
                         $jumlahuang     = $_POST["jumlahuang"];
@@ -31,6 +35,8 @@ include "header.php";
                         echo '
                         <div class="callout callout-info">
                             <h4>';
+
+                        // menambahkan peminjaman dan memunculkan pesan berhasil atau gagal saat menambahkan data
                         echo $dataAkses->tambahPeminjaman($dataUser->id,$dataUser->namalengkap,$jangkawaktu,$jumlahuang);
                         echo '</h4>
                         </div>

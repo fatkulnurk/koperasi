@@ -1,6 +1,8 @@
 <?php
 include "header.php";
 include "../app/FuzzyTsukamoto.php";
+
+// menampilkan hasil dari role, kalau dia bukan pengurus atau admin makan akan muncul pesan akses dilarang
 if($dataUser->isPengurus() != true){
     warning_auth();
 }
@@ -24,10 +26,15 @@ if($dataUser->isPengurus() != true){
     <!-- Main content -->
     <section class="content container-fluid">
         <?php
+
+        // menghapus peminjaman berdasarkan id
         if(isset($_GET['id'])){
+            // mendapatkan id
             $id = $dataAkses->mysqlEscapeString($_GET['id']);
 
             echo '<div class="callout callout-info"><h4>';
+
+            // return atau pesan saat menghapus
             echo $dataAkses->hapusPeminjaman($id);
             echo '</h4></div>';
         }
@@ -57,6 +64,8 @@ if($dataUser->isPengurus() != true){
                             // ambil semua data di tabel user dan meyimpannya pada variabel data
                             //                                $data = $dataAkses->ambilPeminjaman();
                             $data = $dataAkses->ambilPeminjaman();
+
+                            // menampilkan data
                             while($a = $dataAkses->fetchAssoc($data)){
                                 echo '
                                 <tr>

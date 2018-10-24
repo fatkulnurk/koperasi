@@ -1,8 +1,15 @@
 <?php
 require_once "DataAkses.php";
 
+/*
+ * Class User
+ * File ini digunakan untuk Model User
+ * Dipakai di hampir semua file da termasuk file penting
+ * */
+
 class User
 {
+    // variabel
     var $id;
     var $nip;
     var $nama;
@@ -18,7 +25,7 @@ class User
     var $pekerjaan;
     var $password;
 
-    // tanggungan
+    // Variabel tanggungan
     var $tanggunganBri;
     var $tanggunganBpd;
     var $tanggunganBpr;
@@ -31,6 +38,7 @@ class User
 
     /*
      * Ini adalah contructor
+     * Method pertama yang dijalankan saat membuat object
      */
     function __construct()
     {
@@ -73,6 +81,7 @@ class User
 
     /**
      * @param mixed $id
+     * Menginisialisasi data menggunakan ID user
      */
     public function setId($id)
     {
@@ -102,6 +111,7 @@ class User
      * jika tipe akun bernilai 2 berarti pengurus
      * jika tipe akun bernilai 1 maka dia admin
      *
+     * Jika masih bingung buka file informasi.txt
      * */
     public function isAnggota(){
         if($this->tipe_akun == 3){
@@ -111,6 +121,7 @@ class User
         }
     }
 
+    // fungsi cek hak akses pengurus
     public function isPengurus(){
         if($this->getTipeAkun() < 3){
             return true;
@@ -119,6 +130,7 @@ class User
         }
     }
 
+    // fungsi cek hak akses admin
     public function isAdmin(){
         if($this->getTipeAkun() < 2){
             return true;

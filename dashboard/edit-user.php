@@ -1,5 +1,7 @@
 <?php
 include "header.php";
+
+// ketika yang masuk ternyata bukan admin maka akan memanggil fungsi warning_auth() yang ada di app/functions.php.
 if(($dataUser->isAdmin() != true)){
     warning_auth();
 }
@@ -24,7 +26,8 @@ if(($dataUser->isAdmin() != true)){
     <section class="content container-fluid">
 
         <?php
-        // Form Edit data
+        // Form Edit data, mendapatkan id user ketika di klik edit.
+        // dan nantinya akan menampilkan form untuk edit data user
         if(isset($_GET['id'])){
             $id     = $_GET['id'];
             $id     = $dataAkses->mysqlEscapeString($id);
@@ -38,9 +41,7 @@ if(($dataUser->isAdmin() != true)){
                     <div class="box box-primary">
                         <div class="box-header with-border">
                             <h3 class="box-title">Profil Anda</h3>
-                        </div>
-                        <!-- /.box-header -->
-                        <!-- form start -->
+                        </div> 
                         <form role="form" action="?id='.$id.'" method="post">
                             <div class="box-body">
                                 <div class="form-group">
@@ -66,6 +67,7 @@ if(($dataUser->isAdmin() != true)){
             ';
         }
 
+        // ketika tombol perbarui di klik maka data akan di update
         if(isset($_POST['perbarui'])){
             $id    = $_GET['id'];
             $email = $_POST['email'];
@@ -74,21 +76,25 @@ if(($dataUser->isAdmin() != true)){
 
             echo '<div class="callout callout-info"><h4>';
             echo $dataAkses->updateDataProfile($id,$email,$nama,$tgl);
-            echo '</h4>
-<p>Update data kelihatan jika anda mereload halaman ini.</p>
-</div>';
+            echo '
+                </h4>
+                <p>Update data kelihatan jika anda mereload halaman ini.</p>
+                </div>
+            ';
         }
 
 
         ?>
 
+        <!--
+        Menampilkan Semua data User, Pegawai dan admin
+        -->
         <div class="row">
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-header">
                         <h3 class="box-title">Daftar Semua User, Pegawai dan Admin</h3>
                     </div>
-                    <!-- /.box-header -->
                     <div class="box-body">
                         <table id="example2" class="table table-bordered table-hover">
                             <thead>

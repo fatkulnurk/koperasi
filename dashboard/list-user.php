@@ -1,5 +1,7 @@
 <?php
 include "header.php";
+
+// cek yang login admin atau bukan , kalau admin maka akan di tampilkan
 if(($dataUser->isAdmin() != true)){
     warning_auth();
 }
@@ -24,7 +26,7 @@ if(($dataUser->isAdmin() != true)){
     <section class="content container-fluid">
 
         <?php
-        // rubah hak akses
+        // ketima tombol button rubah hak akses di klik
         if(isset($_GET["akses"]) && isset($_GET['id'])){
             $akses  = $_GET['akses'];
             $akses  = $dataAkses->mysqlEscapeString($akses);
@@ -34,6 +36,8 @@ if(($dataUser->isAdmin() != true)){
             echo '<div class="callout callout-info"><h4>';
             echo $dataAkses->updateHakAkses($id,$akses);
             echo '</h4></div>';
+
+            // untuk menghapus
         }elseif (isset($_GET['hapus'])){
             $id     = $_GET['hapus'];
             $id     = $dataAkses->mysqlEscapeString($id);
@@ -69,6 +73,8 @@ if(($dataUser->isAdmin() != true)){
                             <?php
                             // ambil semua data di tabel user dan meyimpannya pada variabel data
                             $data = $dataAkses->ambilUsers();
+
+                            // tampilkan semua data satu persatu
                             while($a = $dataAkses->fetchAssoc($data)){
                                 echo '
                                 <tr>

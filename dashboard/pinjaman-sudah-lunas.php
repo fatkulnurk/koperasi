@@ -1,5 +1,7 @@
 <?php
 include "header.php";
+
+// cek apakah yang login sesuai dengan role halaman ini
 if(($dataUser->isPengurus() != true)){
     warning_auth();
 }
@@ -23,11 +25,14 @@ if(($dataUser->isPengurus() != true)){
     <!-- Main content -->
     <section class="content container-fluid">
         <?php
+        // ketika button status di klik maka akan menjalankan block proggram berikut
         if(isset($_GET["status"]) && isset($_GET['id'])){
             $status = $_GET['status'];
             $id     = $_GET['id'];
 
             echo '<div class="callout callout-info"><h4>';
+
+            // merubah status peminjaman dan menampilkan return dari proses
             echo $dataAkses->SM($status,$id);
             echo '</h4></div>';
         }

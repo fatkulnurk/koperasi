@@ -1,5 +1,7 @@
 <?php
 require_once "../app.php";
+
+// di cek apakah user sudah masuk (ketika sudah masuk session masuk seharusnya berisi data sukses, dan jika dia tidak masuk maka akan di redirect ke halaman logout
 if ($_SESSION['masuk'] != "sukses"){
     header_location("./keluar.php");
 }
@@ -74,8 +76,17 @@ if ($_SESSION['masuk'] != "sukses"){
                             <li class="user-header">
                                 <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                                 <p>
-                                    <?php echo $dataUser->nama;?> - <?php echo $dataUser->pekerjaan;?>
-                                    <small>Member since <?php echo $dataUser->timestamp;?></small>
+                                    <?php
+                                    // menampilkan nama dan pekerjaan user
+                                    echo $dataUser->nama;?> - <?php echo $dataUser->pekerjaan;
+                                    ?>
+                                    <small>
+                                        Member since
+                                        <?php
+                                        // menampilkan waktu dia mendaftar
+                                        echo $dataUser->timestamp;
+                                        ?>
+                                    </small>
                                 </p>
                             </li>
                             <!-- Menu Body -->
@@ -105,7 +116,10 @@ if ($_SESSION['masuk'] != "sukses"){
                     <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
-                    <p><?php echo $dataUser->nama;?></p>
+                    <p><?php
+                        // menampilkan nama usernya
+                        echo $dataUser->nama;
+                        ?></p>
                     <!-- Status -->
                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>

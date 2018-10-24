@@ -1,9 +1,11 @@
 <?php
+/*
+ * CLASS UNTUK ALGORITMA FUZZY
+ * */
+
 class FuzzyTsukamoto
 {
-    /*
-     * Object User
-     */
+    // variabel object user
     var $user;
 
     // besar pinjaman
@@ -11,8 +13,10 @@ class FuzzyTsukamoto
     var $umur;
     var $jangkawaktu;
 
+    // hasil perhitungan
     var $hasil;
 
+    // Method pertama yang akan di jalankan saat membuat objek
     function __construct($id,$nominalPinjaman,$jangkawaktu)
     {
         $user = new dataUser($id);
@@ -23,6 +27,7 @@ class FuzzyTsukamoto
         $this->umur                 = $this->hitungUmur($user->umur);
     }
 
+    //method untuk menghitung umur
     function hitungUmur($number){
         $bday = new DateTime($number);
         $today = new DateTime('00:00:00');
@@ -30,6 +35,7 @@ class FuzzyTsukamoto
         return $diff->y;
     }
 
+    // method untuk cek gaji
     function cekGaji(){
         // variabel asosiatif array untuk return data
         $retval = array();
@@ -71,6 +77,7 @@ class FuzzyTsukamoto
 
     }
 
+    // method untuk cek umur, dia masuk dalam kategori apa
     function cekumur(){
         // variabel asosiatif array untuk return data
         $retval = array();
@@ -108,6 +115,7 @@ class FuzzyTsukamoto
         return $retval;
     }
 
+    // menhitung berapa besar pinjaman
     function cekBesarPinjaman(){
         // variabel asosiatif array untuk return data
         $retval = array();
@@ -146,6 +154,7 @@ class FuzzyTsukamoto
         return $retval;
     }
 
+    // menghitung jangka waktu pinjaman
     function cekJangkaWaktu(){
         // variabel asosiatif array untuk return data
         $retval = array();
@@ -201,29 +210,20 @@ class FuzzyTsukamoto
         return $retval;
     }
 
+    // menghitung data dan menyimpan hasil data di array (untuk nantinya data akan di hitung berdasarkan aturan fuzzy yang ada di tabel
     function hitungData(){
-        // variabel data
+        // variabel data untuk pengecekan
         $miugaji            = $this->cekGaji();
         $miumur             = $this->cekumur();
         $miubesarpinjaman   = $this->cekBesarPinjaman();
         $miujangkawaktu     = $this->cekJangkaWaktu();
-//
-//        var_dump($miugaji);
-//        echo "<hr>";
-//        var_dump($miumur);
-//        echo "<hr>";
-//        var_dump($miubesarpinjaman);
-//        echo "<hr>";
-//        var_dump($miujangkawaktu);
-//        echo "<hr>";
-//        echo "<hr>";
-//        echo "<hr>";
-//
 
+        // pendefinisian array
         $alphas = array();
         $zs = array();
 
 
+        /* DATA DI ISI KE DALAM ARRAY BERDASARKAN TABEL ATURAN */
 
         // rule 1
         array_push($alphas,min($miugaji['mugajisedikit'],$miumur['muumurmuda'],$miubesarpinjaman['munominalsedikit'],$miujangkawaktu['mujangkapendek']));
@@ -637,21 +637,6 @@ class FuzzyTsukamoto
         array_push($zs,$temp);
 
 
-//        echo "<hr>";
-//        echo "<hr>";
-//        echo "<hr>";
-//        echo "<hr>";
-//        echo "<hr>";
-//        echo "<hr>";
-//        var_dump($alphas);
-//        echo "<hr>";
-//        var_dump($zs);
-//        echo "<hr>";
-        //print_r($alphas);
-        // echo "<hr>";
-         //print_r($zs);
-        // var_dump($zs);
-
         // echo count($alphas);
         $counter = 0;
         $counter2 = 0;
@@ -660,14 +645,11 @@ class FuzzyTsukamoto
             $counter2 += $alphas[$i];
         }
 
-//        if($counter2 == 0){
-//            //$counter2 = 1;
-//        }
-
         $htemp = $counter / $counter2;
         return $htemp;
     }
 
+    // method untuk menghitung kelayakan, dia diterima apa kagak
     function hasilPeminjam(){
         // variabel asosiatif array untuk return data
          // $retval = array();
@@ -706,6 +688,7 @@ class FuzzyTsukamoto
 
 }
 
+// object user (informasi untuk user, sama seperti class user)
 class dataUser{
     var $id;
     var $nip;

@@ -25,13 +25,17 @@ if(($dataUser->isPengurus() != true)){
         <section class="content container-fluid">
 
             <?php
+            // ketika tombol setuju atau tolak di klik makan akan masuk ke block kode berikut
             if(isset($_GET["status"]) && isset($_GET['id'])){
+
+                // mendapatkan parameter status dan id
                 $status = $_GET['status'];
                 $id     = $_GET['id'];
 
                 echo '
                         <div class="callout callout-info">
                             <h4>';
+                // di tampilkan return hasil perhitungan
                 echo $dataAkses->DPJ($status,$id);
                 echo '</h4>
                         </div>
@@ -65,18 +69,35 @@ if(($dataUser->isPengurus() != true)){
                                 $data = $dataAkses->query("select * from peminjaman where peminjaman_status='menunggu'");
                                 while($a = $dataAkses->fetchAssoc($data)){
                                     echo '
-                                <tr>
-                                <td>'.$a["peminjaman_nama_lengkap"].'</td>
-                                <td>'.$a["peminjaman_nominal"].'</td>
-                                <td>'.$a["peminjaman_jangka_waktu"].'</td>
-                                <td>'.$a["peminjaman_timestap"].'</td>
-                                <td>'.$a["peminjaman_status"].'</td>';
+                                        <tr>
+                                        <td>'.$a["peminjaman_nama_lengkap"].'</td>
+                                        <td>'.$a["peminjaman_nominal"].'</td>
+                                        <td>'.$a["peminjaman_jangka_waktu"].'</td>
+                                        <td>'.$a["peminjaman_timestap"].'</td>
+                                        <td>'.$a["peminjaman_status"].'</td>
+                                    ';
+
+                                    /*
+                                     * PROSES MENGHITUNG KELAKAYANAN PEMINJAMAN MENGGUNAKAN ALGORITMA FUZZYNYA
+                                     *
+                                     * prosesnya ada di class FuzzyTsukamoto
+                                     * pada direktori
+                                     * app/FuzzyTsukamoto.php
+                                     *
+                                     * membuat object baru dengan nama fuzzy
+                                     * yang berisi parameter
+                                     * 1. ID User Peminjam
+                                     * 2. Nominal Peminjaman
+                                     * 3. Jangka Waktu Pinjaman
+                                     *
+                                     * */
                                     $fuzzy = new FuzzyTsukamoto($a["peminjaman_user_id"],$a["peminjaman_nominal"],$a["peminjaman_jangka_waktu"]);
-                               echo '      
-                                <td class="text-success text-bold">'.$fuzzy->hasilPeminjam().'</td>
-                                <td class="text-center"><a class="btn btn-info btn-flat" href="?status=disetujui&id='.$a["peminjaman_id"].'">Setujui</a>&ensp;&ensp;&ensp;<a class="btn btn-danger btn-flat" href="?status=ditolak&id='.$a["peminjaman_id"].'">Tolak</a></td>
-                                </tr>
-                                ';
+
+                                    echo '      
+                                        <td class="text-success text-bold">'.$fuzzy->hasilPeminjam().'</td>
+                                        <td class="text-center"><a class="btn btn-info btn-flat" href="?status=disetujui&id='.$a["peminjaman_id"].'">Setujui</a>&ensp;&ensp;&ensp;<a class="btn btn-danger btn-flat" href="?status=ditolak&id='.$a["peminjaman_id"].'">Tolak</a></td>
+                                        </tr>
+                                    ';
                                 }
                                 ?>
                                 </tbody>

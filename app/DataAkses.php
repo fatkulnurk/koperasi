@@ -70,7 +70,7 @@ class DataAkses extends Db
         return $result;
     }
 
-
+    // menambahkan peminjaman baru
     function tambahPeminjaman($id,$nama,$jangkawaktu,$nominal){
         $result = $this->conn->query("INSERT INTO peminjaman (peminjaman_user_id, peminjaman_nama_lengkap, peminjaman_nominal, peminjaman_jangka_waktu) VALUES ('$id','$nama','$nominal','$jangkawaktu');");
         if($result){
@@ -91,7 +91,7 @@ class DataAkses extends Db
         return $this->numRows($result);
     }
 
-    // daftar user baru
+    // Mendaftarkan user baru
     function daftar($nip,$email,$nama,$kelamin,$gaji,$sisa_gaji,$umur,$golongan,$unitkerja,$nohp,$pekerjaan,$password,$tanggunganbri,$tanggunganbpd,$tanggunganbpr,$tanggungankpri,$tanggungansekbid,$tanggunganlainlain){
         // $result = $this->conn->query("INSERT INTO user (user_email, user_namalengkap, user_kelamin, user_gaji, user_umur, user_pekerjaan, user_password) VALUES ('$email','$nama','$kelamin','$gaji','$umur','$pekerjaan','$password');");
         $result = $this->conn->query("INSERT INTO user (user_nip, user_email, user_namalengkap, user_kelamin, user_gaji,user_sisa_gaji, user_umur, user_golongan, user_unitkerja, user_nohp, user_pekerjaan, user_password, user_tanggungan_bri, user_tanggungan_bpd, user_tanggungan_bpr, user_tanggungan_kpriedipeni,user_tanggungan_sekbid, user_tanggungan_lainlain) VALUES ('$nip','$email','$nama','$kelamin','$gaji','$sisa_gaji','$umur','$golongan','$unitkerja','$nohp','$pekerjaan','$password','$tanggunganbri','$tanggunganbpd','$tanggunganbpr','$tanggungankpri','$tanggungansekbid','$tanggunganlainlain');");
