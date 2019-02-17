@@ -1,6 +1,21 @@
 # koperasi
 Pendeteksi Kelayakan Peminjaman Uang dengan Algoritma Fuzzy
 
+## Requirements
+- Php (Min v5.6)
+- MariaDB 10.1.30
+---
+
+## CARA INSTALL
+
+clone repository ini
+
+```
+git clone https://github.com/fatkulnurk/koperasi/
+```
+
+Jalankan Dump Query Berikut.
+
 ```
 -- phpMyAdmin SQL Dump
 -- version 4.7.7
